@@ -190,7 +190,8 @@ public class Converters {
       getValue(cardData, "funding"),
       getValue(cardData, "country"),
       getValue(cardData, "currency"),
-      getValue(cardData, "id")
+      getValue(cardData, "id"),
+      null
     );
   }
 
@@ -384,12 +385,15 @@ public class Converters {
     BankAccount account = new BankAccount(
       // required fields only
       accountData.getString("accountNumber"),
+      getValue(accountData, "accountHolderName"),
+      getValue(accountData, "accountHolderType"),
+      null,
       accountData.getString("countryCode"),
       accountData.getString("currency"),
+      null,
+      null,
       getValue(accountData, "routingNumber", "")
     );
-    account.setAccountHolderName(getValue(accountData, "accountHolderName"));
-    account.setAccountHolderType(getValue(accountData, "accountHolderType"));
 
     return account;
   }
